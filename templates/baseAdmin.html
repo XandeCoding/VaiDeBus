@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang = "pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vai De- Raul e Alexandre</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleAdmin.css') }}">    
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Ubuntu:300,400,700,&display=swap" rel="stylesheet">
+    
+</head>
+    
+<body>
+    <div class="header">
+        <div class="linha">
+            <header>
+                <div class="coluna col12">
+                    <h1 class="logo">Vai de Bus</h1>
+                </div>               
+            </header>
+        </div>
+    </div>
+    <div class="linha">
+            <div class="coluna col3 sidebar">
+                <div class="PanelBox">
+                	<ul class="sem-marcador sem-padding">
+                		<li>Onibus</li>
+                        <ul>
+                            <li><a href="/admin/controlPanel/addOnibus">Adicionar Onibus</a></li>
+                            <li><a href="/admin/controlPanel/updateOnibus">Atualizar Onibus</a></li>
+                            <li><a href="/admin/controlPanel/deleteOnibus">Deletar Onibus</a></li>
+                            <li><a href="/admin/controlPanel/selectOnibus">Visualizar Onibus</a></li>
+                        </ul>
+                        <li>Motoristas</li>
+                        <ul>
+                            <li><a href="/admin/controlPanel/addMotorista">Adicionar Motoristas</a></li>
+                            <li><a href="/admin/controlPanel/updateMotorista">Atualizar Motoristas</a></li>
+                            <li><a href="/admin/controlPanel/deleteMotorista">Deletar Motoristas</a></li>
+                            <li><a href="/admin/controlPanel/selectMotorista">Visualizar Motoristas</a></li>
+
+                        </ul>
+                        <li>Viagens</li>
+                        <ul>
+                            <li><a href="/admin/controlPanel/addViagem">Adicionar Viagem</a></li>
+                            <li><a href="/admin/controlPanel/updateViagem">Atualizar Viagem</a></li>
+                            <li><a href="/admin/controlPanel/deleteViagem">Deletar Viagem</a></li>  
+                            <li><a href="/admin/controlPanel/selectViagem">Visualizar Viagens</a></li>
+                        </ul>
+
+                </div>
+            </div>
+                                                                               
+            <div class="coluna col9">                
+                {% block content %}
+                {% endblock %}
+            </div>  
+    </div>
+        <div class = "footer">
+            <div class="linha">
+            <footer>
+                <div class="coluna col12">
+                    <span>Trabalho de Projeto de Software</span>
+                    <br>
+                    <span>Prof. Rubens</span>
+                    <br>
+                    <span>&copy;2019 - Alexandre F. & Raul V.</span>
+                </div>
+            </footer>
+            </div>
+        </div>
+    </body>
+</html>

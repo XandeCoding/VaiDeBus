@@ -1,0 +1,47 @@
+{% extends "baseCommon.html" %}
+
+{% block style %}
+<link rel="stylesheet" type href="{{ url_for('static', filename='css/styleCadastro.css') }}" />
+{% endblock %}
+
+{% block login %} {% endblock %}
+{% block content %}
+<div class="linha">
+    <section>
+        <div class="coluna col12 sidebar">
+            <div class="registerBox">
+                <form action="" method="POST">
+                    <h3 class="cadastrar">Cadastro de Clientes</h3>
+                    
+                    <label class="nome">Nome:</label>
+                    <input class="nome" type="text"  name="nome" id="nome">
+                    <div class="sexButton">
+                        <label class="sexo">Sexo:</label><br>
+
+                        <input class="sexOption" type="radio"  name="Masculino" id="Masculino" checked>
+                        <label class="masculino">Masculino</label><br>
+                        
+                        <input class="sexOption" type="radio"  name="feminino" id="feminino">
+                        <label class="feminino">Feminino</label><br>
+                        
+                        <input class="sexOption" type="radio"  name="outro" id="outro">
+                        <label class="outro">Outro</label><br>
+                    </div>
+                    <br>
+                    <label class="cpf">Cpf:</label>
+                    <input class="cpf" type="text"  name="cpf">
+                    <br>
+                    
+                    <label class="usuario">Usuario</label>
+                    <input class="usuario" type="text" name="usuario">
+                    <br>
+                    <label class="senha">Senha</label>
+                    <input class="senha" type="password" name="senha">
+                    <br>
+                    <input type="submit" class="botao" name="cadastrar" value="cadastrar">
+                    </form>
+             </div>
+        </div>
+    </section>    
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="normalize.css"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styleLogin.css') }}">
+         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Ubuntu:300,400,700,&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<h1 class="title">Login</h1>
+		<form action="" method="POST">
+			<div class="container1">
+				<label for="username"><b>Usuario:</b></label>
+				<input type="text" placeholder="Coloque seu usuario" name="username" required>
+			</div>
+			<div class="container2">
+				<label for="password"><b>Senha:</b></label>
+				<input type="password" placeholder="Coloque sua senha" name="password" required>
+			</div>
+			<div class="container3">
+				<button type="submit">login</button>
+			</div>
+		</form>
+	</body>
+</html>

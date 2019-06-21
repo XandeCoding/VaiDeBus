@@ -1,0 +1,29 @@
+/*max-width colocar a largura maxima das imagens */
+/*height em auto coloca automatico*/
+img {
+    /*max-width: 100%;*/
+    display: block;
+    width: 480px;
+    height: auto;
+    border-radius: 7px;
+    float: left;
+    padding: 20px 10px 10px 0px
+}
+section.apresentacao {
+    text-align: left;
+    padding: 6px 10px; !important
+}
+
+.loginBox {
+    font-weight: 300 !important;
+    padding: 6px 0px !important;
+}
+.login {
+    font-weight: 600; !important
+}
+input.usuario, input.senha, input.CampoPesquisa{
+    border-radius: 3px;
+    border: 1px solid #555;
+    width: 215px;
+    height: auto;    
+}

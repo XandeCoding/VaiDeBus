@@ -1,0 +1,41 @@
+/*max-width colocar a largura maxima das imagens */
+/*height em auto coloca automatico*/
+.cadastrar {
+    font-weight: 700px !important;
+    font-size: 30px;
+}
+.registerBox {
+    font-weight: 300 !important;
+    float: center;   
+    margin-left: 250px;
+}
+
+input.nome, input.cpf, input.usuario, input.senha, input.CampoPesquisa{
+    border-radius: 3px;
+    border: 1px solid #555;
+    width: 215px;
+    height: auto;   
+}
+.sexButton { 
+    float: right;
+    padding-right: 200px;
+}
+.sexOption {
+    padding: 0px 8px;   
+}
+.sexo {
+    padding-left: 25px;
+    
+}
+input.nome {
+    margin: 3px 10px;
+}
+input.cpf {
+    margin: 3px 28px;
+}
+input.usuario {
+    margin: 3px 3px;
+}
+input.senha {
+    margin: 3px 14px;
+}

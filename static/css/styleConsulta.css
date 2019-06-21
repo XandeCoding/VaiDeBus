@@ -1,0 +1,33 @@
+.menu a {
+    font-weight: 200 !important;
+    font-size: 17px;
+}
+
+.consulta :hover {
+    text-decoration: none !important;
+}
+/*max-width colocar a largura maxima das imagens */
+/*height em auto coloca automatico*/
+
+
+.registerBox {
+    font-weight: 300 !important;
+    padding: 6px 0px !important;
+}
+.login {
+    font-weight: 600; !important
+}
+input.usuario, input.senha, input.CampoPesquisa{
+    border-radius: 3px;
+    border: 1px solid #555;
+    width: 215px;
+    height: auto;    
+}
+
+/*Background muda o fundo do botao */
+/*border-radius arredonda os cantos */
+/*cursor: pointer quando o mouse passar em cima muda o ponteiro */
+/*margin so com dois parametros fica 1:cima, 2:baixo */
+/*display: inline-block faz com que ele fique em linha e um bloco */
+/*border em none tira a borda */
+

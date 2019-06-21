@@ -1,0 +1,22 @@
+{% extends "baseCommon.html" %}
+
+{% block login %}{% endblock %}
+
+{% block content %}
+	<div class=linha>
+		<div class=coluna col12 sidebar>
+			<div class=viagens>
+				{% for viagem in dataViagens %}
+					<table>
+						<h2 class=viagemDestino>Destino: {{ viagem[1]}}</h2>
+						<h3 class=viagemOrigem>Origem: {{ viagem[0]}}</h3>
+						<h3 class=horario>Horario: {{ viagem[2]}}</h3>
+						<p>Motorista {{ viagem[4]}}</p>
+						<p>Onibus {{ viagem[3]}}</p>
+					</table>
+					<br>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

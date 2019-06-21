@@ -1,0 +1,14 @@
+{% extends "baseCommon.html" %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleIndex.css') }}">
+{% endblock %}
+          
+{% block content %}                              
+<div class="coluna col9">                
+    <img src="{{ url_for ('static', filename='img/Onibus1.jpg') }}">
+    <section class="apresentacao"><h2>Sobre nós</h2>
+        <p>Um trabalho de Projeto de Software - O qual é feito para a Consulta, Compra, persistência, manipulação e manutenção de todas as informações referentes as passagens da companhia de onibus</p>
+    </section>
+</div>
+{% endblock %}

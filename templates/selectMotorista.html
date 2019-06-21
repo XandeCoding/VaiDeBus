@@ -1,0 +1,20 @@
+{% extends "baseAdmin.html" %}   
+{% block content %}                   
+    <div class="visualizeBox">
+        <h2 class="tituloMotoristas">Visualizar Motoristas</h2>
+
+        <table>
+        	<tr>
+        		<th>Nome</th>
+        		<th>Cpf</th>
+        	</tr>
+        	{% for item in dataMotoristas %}
+        		<tr>
+        			{% for count in range (2) %}
+        				<td> {{item[count]}} </td>
+        			{% endfor %}
+        		</tr>
+        	{% endfor %}
+        </table>
+    </div>
+{% endblock %}

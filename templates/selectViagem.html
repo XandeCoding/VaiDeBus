@@ -1,0 +1,23 @@
+{% extends "baseAdmin.html" %}   
+{% block content %}                   
+    <div class="visualizeBox">
+        <h2 class="tituloViagem">Visualizar Viagens</h2>
+
+        <table>
+        	<tr>
+        		<th>Cidade Origem</th>
+        		<th>Cidade Destino</th>
+        		<th>Horario</th>
+        		<th>Placa do Onibus</th>
+        		<th>Motorista</th>
+        	</tr>
+        	{% for item in dataViagens %}
+        		<tr>
+        			{% for count in range (6) %}
+        				<td> {{item[count]}} </td>
+        			{% endfor %}
+        		</tr>
+        	{% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang = "pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vai De Bus - Raul e Alexandre</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleCommon.css') }}">
+    {% block style %}
+
+    {% endblock %}
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Ubuntu:300,400,700,&display=swap" rel="stylesheet">
+    
+</head>
+    
+<body>
+    <div class="header">
+        <div class="linha">
+            <header>
+                <div class="coluna col4">
+                    <h1 class="logo">Vai de Bus</h1>
+                </div>
+                <div class="coluna col8">
+                    <nav>
+                        <h3 class=home><a href="/index">Home</a></h3>
+                        <h3 class=listarViagens><a href="/listarViagens">Listar Viagens</a></h3>
+                            <section class="consulta">
+                                    <form action="" method="POST">
+                                        <label>Consulta</label>
+                                        <input class="CampoPesquisa" type="text" name="consulta">
+                                        <input type="submit" class="botao" name="pesquisar" value="Pesquisar"> 
+                                    </form>
+                            </section>
+                    </nav>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="linha">        
+    {% block login %}
+            <div class="coluna col3 sidebar">
+                <div class="loginBox">
+                    <form action="" method="POST">
+                        <h3 class="login">Login</h3>
+                        <label class="usuario">Usuario</label>
+                        <input class="usuario" type="text"  name="username">
+                        <label class="senha">Senha</label>
+                        <input class="senha" type="password" name="password">
+                        <input type="submit" class="botao" name="login" value="login">
+                        <br>
+                        
+                    </form>
+                        <form action="/cadastrar">
+                        <input type="submit" class="botao" name="cadastrar" value="cadastrar">
+                        </form>
+                 </div>
+            </div>
+    {% endblock %}
+            {% block content %}                          
+
+            {% endblock %}
+    </div>
+        <div class = "footer">
+            <div class="linha">
+            <footer>
+                <div class="coluna col12">
+                    <span>Trabalho de Projeto de Software</span>
+                    <br>
+                    <span>Prof. Rubens</span>
+                    <br>
+                    <span>&copy;2019 - Alexandre F. & Raul V.</span>
+                </div>
+            </footer>
+            </div>
+        </div>
+    </body>
+</html>

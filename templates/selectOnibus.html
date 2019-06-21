@@ -1,0 +1,23 @@
+{% extends "baseAdmin.html" %}   
+{% block content %}                   
+    <div class="visualizeBox">
+        <h2 class="tituloOnibus">Visualizar Onibus</h2>
+
+        <table>
+        	<tr>
+        		<th>Placa</th>
+        		<th>Ano</th>
+        		<th>Passageiros</th>
+        		<th>Modelo</th>
+        		<th>Qtd. Poltronas</th>
+        	</tr>
+        	{% for item in dataOnibus %}
+        		<tr>
+        			{% for count in range (5) %}
+        				<td> {{item[count]}} </td>
+        			{% endfor %}
+        		</tr>
+        	{% endfor %}
+        </table>
+    </div>
+{% endblock %}
