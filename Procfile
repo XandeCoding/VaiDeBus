@@ -1,1 +1,1 @@
-web: python app.py
+web: export FLASK_ENV=development && flask run
