@@ -1,4 +1,9 @@
 {% extends "baseAdmin.html" %}   
+
+{% block style %} 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleAdminSelect.css') }}"> 
+{% endblock %}
+
 {% block content %}                   
     <div class="visualizeBox">
         <h2 class="tituloOnibus">Visualizar Onibus</h2>
@@ -10,10 +15,12 @@
         		<th>Passageiros</th>
         		<th>Modelo</th>
         		<th>Qtd. Poltronas</th>
+                <th>Atualizar</th>
+                <th>Deletar</th>
         	</tr>
         	{% for item in dataOnibus %}
         		<tr>
-        			{% for count in range (5) %}
+        			{% for count in range (7) %}
         				<td> {{item[count]}} </td>
         			{% endfor %}
         		</tr>

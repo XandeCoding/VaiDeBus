@@ -1,1 +1,1 @@
-web: export FLASK_ENV=development && flask run
+web: gunicorn wsgi:app

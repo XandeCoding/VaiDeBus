@@ -32,7 +32,7 @@ CREATE TABLE onibus 	(numOnibus INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 
 sqlViagens = """
 CREATE TABLE viagens 	(numViagem INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-						onibusPlaca TEXT UNIQUE NOT NULL,
+						onibusPlaca TEXT NOT NULL,
 						motoristaViagem TEXT NOT NULL,
 						diaViagem TEXT NOT NULL,
 						horario TEXT NOT NULL,

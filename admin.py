@@ -74,8 +74,9 @@ def configure (app):
 		if request.method == "POST":
 			# processar dados
 			onibusPlaca = request.form.get ("onibusPlaca")
-			onibusPlaca = onibusPlaca.split ("'")
+			print ("Placa do onibus" + onibusPlaca)
 			motoristaViagem = request.form.get ("motoristaViagem")
+			print ("Placa do onibus" + motoristaViagem)
 			diaViagem = request.form.get ("diaViagem")
 			horario = request.form.get ("horario")
 			cidadeOrigem = request.form.get ("cidadeOrigem")
@@ -86,7 +87,7 @@ def configure (app):
 			 	#Implementar checagem de integridade com as outras tabelas
 			else:
 				dbInsertViagem (onibusPlaca, motoristaViagem, diaViagem,
-				 horario, cidadeOrigem, cidadeDestino)
+					horario, cidadeOrigem, cidadeDestino)
 				# implementar caso valido
 				flash ("Registro concluido!")
 		return render_template ("mensagemAdmin.html")

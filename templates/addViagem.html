@@ -14,14 +14,14 @@
             <label class="motoristaViagem">Motoristas:</label>
             <select name="motoristaViagem">
                 {% for nome in dataMotoristas %}
-                    <option value= {{ nome }}> {{ nome }}</option>
+                    <option value= {{ nome[0] }}> {{ nome[0] }}</option>
                 {% endfor %}
             </select>                
             <br>
             <label class="onibusPlaca">Placa do Onibus:</label>
             <select name="onibusPlaca">
                 {% for nome in dataOnibus %}
-                    <option value= {{ nome }}> {{ nome }}</option>
+                    <option value= {{ nome[0] }}> {{ nome[0]}}</option>
                 {% endfor %}
             </select>          
             <br>
