@@ -1,0 +1,23 @@
+{% extends "baseAdmin.html" %}   
+{% block content %}                   
+    <div class="registerBox">
+        <form action="" method="POST">
+            <h3 class="cadastrar">Cadastro de Onibus</h3>
+            
+            <label class="placa">Placa:</label>
+            <input class="placa" type="text"  name="placa" value={{ dataOnibus[0] }}>                        
+            <br>
+            <label class="ano">Ano:</label>
+            <input class="ano" type="text"  name="ano" value={{ dataOnibus[1] }}>
+            <br>
+            
+            <label class="modelo">Modelo</label>
+            <input class="modelo" type="text" name="modelo" value={{ dataOnibus[2] }}>
+            <br>
+            <label class="qtdPoltronas">Quantidade de Poltronas:</label>
+            <input class="qtdPoltronas" type="text" name="qtdPoltronas" value={{ dataOnibus[3] }}>
+            <br>
+            <input type="submit" class="botao" name="cadastrar" value="cadastrar">
+        </form>
+    </div>
+{% endblock %}

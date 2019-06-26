@@ -115,10 +115,10 @@ def dbDeleteCliente (cpfCliente):
 	""".format (cpf)
 
 @crudSqlite
-def dbDeleteOnibus (placa):
+def dbDeleteOnibus (numOnibus):
 	return """
-	DELETE FROM onibus where placa = "{}"
-	""".format (placa)
+	DELETE FROM onibus where numOnibus = "{}"
+	""".format (numOnibus)
 
 @crudSqlite
 def dbDeleteViagem (numViagem):
@@ -158,7 +158,7 @@ def dbSelectAllOnibus ():
 	connection = sqlite3.connect ("CompOnibus.db")
 	cursor = connection.cursor ()
 	command = """
-	SELECT placa, ano, passageiros, modelo, qtdPoltronas
+	SELECT placa, ano, passageiros, modelo, qtdPoltronas, numOnibus
 	FROM onibus"""
 
 	cursor.execute (command)
@@ -194,11 +194,37 @@ def dbSelectAllViagens ():
 	connection = sqlite3.connect ("CompOnibus.db")
 	cursor = connection.cursor ()
 	command = """
-	SELECT cidadeOrigem, cidadeDestino, horario, onibusPlaca, motoristaViagem
+	SELECT cidadeOrigem, cidadeDestino, diaViagem, horario, onibusPlaca, motoristaViagem, numViagem
 	FROM viagens"""
 
 	cursor.execute (command)
 	data = cursor.fetchall ()
+	connection.close ()
+	return data
+
+def dbSelectViagem (numViagem):
+	connection = sqlite3.connect ("CompOnibus.db")
+	cursor = connection.cursor ()
+	command = """
+	SELECT cidadeOrigem, cidadeDestino, motoristaViagem, onibusPlaca, diaViagem, horario
+	FROM viagens
+	WHERE numViagem = numViagem"""
+
+	cursor.execute (command)
+	data = cursor.fetchone ()
+	connection.close ()
+	return data
+
+def dbSelectOnibus (numOnibus):
+	connection = sqlite3.connect ("CompOnibus.db")
+	cursor = connection.cursor ()
+	command = """
+	SELECT placa, ano, modelo, qtdPoltronas
+	FROM onibus
+	WHERE numOnibus = numOnibus"""
+
+	cursor.execute (command)
+	data = cursor.fetchone ()
 	connection.close ()
 	return data
 

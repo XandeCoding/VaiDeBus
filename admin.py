@@ -39,6 +39,19 @@ def configure (app):
 		if request.method == "GET":
 			return render_template ("selectOnibus.html", dataOnibus = dbSelectAllOnibus ())
 
+	@app.route ("/admin/controlPanel/updateOnibus", methods=["POST",])
+	def updateOnibus ():
+		numOnibus = request.form.get ("atualizar")
+		return render_template ("updateOnibus.html", 
+				dataOnibus = dbSelectOnibus (numOnibus))
+
+	@app.route ("/admin/controlPanel/deleteOnibus", methods=["POST",])
+	def deleteOnibus ():
+		numOnibus = request.form.get ("deletar")
+		dbDeleteOnibus (numOnibus)
+
+		return redirect (url_for ("selectOnibus"))
+
 	#Motoristas
 	@app.route ("/admin/controlPanel/addMotorista", methods=["GET", "POST",])
 	def addMotorista ():
@@ -66,6 +79,7 @@ def configure (app):
 	def selectMotorista ():
 		if request.method == "GET":
 			return render_template ("selectMotorista.html", dataMotoristas = dbSelectAllMotoristas ())
+
 	#Viagens
 	@app.route ("/admin/controlPanel/addViagem", methods=["GET", "POST",])
 	def addViagem ():
@@ -74,9 +88,7 @@ def configure (app):
 		if request.method == "POST":
 			# processar dados
 			onibusPlaca = request.form.get ("onibusPlaca")
-			print ("Placa do onibus" + onibusPlaca)
 			motoristaViagem = request.form.get ("motoristaViagem")
-			print ("Placa do onibus" + motoristaViagem)
 			diaViagem = request.form.get ("diaViagem")
 			horario = request.form.get ("horario")
 			cidadeOrigem = request.form.get ("cidadeOrigem")
@@ -96,4 +108,19 @@ def configure (app):
 	def selectViagem ():
 		if request.method == "GET":
 			return render_template ("selectViagem.html", dataViagens = dbSelectAllViagens ())
-			
+
+
+	@app.route ("/admin/controlPanel/updateViagem", methods=["POST",])
+	def updateViagem ():
+		numViagem = request.form.get ("atualizar")
+		return render_template ("updateViagem.html", 
+				dataViagem = dbSelectViagem (numViagem), 
+				dataMotoristas = dbSelectAllNomeMotoristas (),
+				dataOnibus = dbSelectAllOnibus ())
+
+	@app.route ("/admin/controlPanel/deleteViagem", methods=["POST",])
+	def deleteViagem ():
+		numViagem = request.form.get ("deletar")
+		dbDeleteViagem (numViagem)
+
+		return redirect (url_for ("selectViagem"))
