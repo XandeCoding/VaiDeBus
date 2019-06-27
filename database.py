@@ -11,6 +11,14 @@ def crudSqlite (function):
 		connection.close ()
 	return (decorator)
 
+
+
+
+
+
+
+
+
 """
 Implementacao das funcoes de insercoes referentes a cada tabela da bd
 """
@@ -61,70 +69,14 @@ def dbInsertViagem (onibusPlaca, motoristaViagem, diaViagem,
 	""".format (onibusPlaca, motoristaViagem, diaViagem, horario,
 		cidadeOrigem, cidadeDestino)
 
-"""
-Implementacao das funcoes de alteracoes referentes a cada tabela da bd
-"""
-#Argumentos, campo para alteracao, chave de alteracao, campo de pesquisa no bd
-#chave de pesquisa
 
-@crudSqlite
-def dbUpdate (table, setCampo, alteracao, whereCampo, chave):
-	return """
-	UPDATE "{}" SET "{}" = "{}" WHERE "{}" = "{}"
-	""".format (table, setCampo, alteracao, whereCampo, chave)
 
-@crudSqlite
-def dbUpdatePessoa (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (pessoas, setCampo, alteracao, whereCampo, chave)
 
-@crudSqlite
-def dbUpdateMotorista (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (motoristas, setCampo, alteracao, whereCampo, chave)
 
-@crudSqlite
-def dbUpdateCliente (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (clientes, setCampo, alteracao, whereCampo, chave)
 
-@crudSqlite
-def dbUpdateCliente (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (clientes, setCampo, alteracao, whereCampo, chave)
-@crudSqlite
-def dbUpdateViagem (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (viagens, setCampo, alteracao, whereCampo, chave)
-"""
-Implementacao das funcoes de remocao referentes a cada tabela da bd
-"""
-@crudSqlite
-def dbDeletePessoa (cpf):
-	return """
-	DELETE FROM pessoas where cpf = "{}"
-	""".format (cpf)
 
-@crudSqlite
-def dbDeleteMotorista (cpfMotorista):
-	dbDeletePessoa (cpfMotorista)
-	return """
-	DELETE FROM motoristas where cpfMotorista = "{}"
-	""".format (cpf)
 
-@crudSqlite
-def dbDeleteCliente (cpfCliente):
-	dbDeletePessoa (cpfCliente)
-	return """
-	DELETE FROM clientes where cpfCliente = "{}"
-	""".format (cpf)
 
-@crudSqlite
-def dbDeleteOnibus (numOnibus):
-	return """
-	DELETE FROM onibus where numOnibus = "{}"
-	""".format (numOnibus)
-
-@crudSqlite
-def dbDeleteViagem (numViagem):
-	return """
-	DELETE FROM viagens where numViagem = "{}"
-	""".format (numViagem)
 
 
 #Implementacao das funcoes de selecao referentes a cada tabela e casos especificos da bd 
@@ -178,6 +130,15 @@ def dbSelectAllMotoristas ():
 	connection.close ()
 	return data
 
+def dbSelectMotorista (numMotorista):
+	connection = sqlite3.connect ("CompOnibus.db")
+	cursor = connection.cursor ()
+	command = """
+	SELECT id, cpf, nome, sexo, usuario, senha 
+	FROM motoristas, pessoas
+	WHERE "{}" = "{}"
+	""".format(numMotorista, id)
+	
 def dbSelectAllClientes ():
 	connection = sqlite3.connect ("CompOnibus.db")
 	cursor = connection.cursor ()
@@ -221,7 +182,7 @@ def dbSelectOnibus (numOnibus):
 	command = """
 	SELECT placa, ano, modelo, qtdPoltronas
 	FROM onibus
-	WHERE numOnibus = numOnibus"""
+	WHERE numOnibus = "{}" """.format (numOnibus)
 
 	cursor.execute (command)
 	data = cursor.fetchone ()
@@ -240,3 +201,149 @@ def dbSelectCompLogin ():
 	data = cursor.fetchone ()
 	connection.close ()
 	return data
+
+
+
+
+
+
+
+
+
+"""
+Implementacao das funcoes de alteracoes referentes a cada tabela da bd
+"""
+#Argumentos, campo para alteracao, chave de alteracao, campo de pesquisa no bd
+#chave de pesquisa
+
+@crudSqlite
+def dbUpdate (table, setCampo, alteracao, whereCampo, chave):
+	return """
+	UPDATE "{}" SET "{}" = "{}" WHERE "{}" = "{}"
+	""".format (table, setCampo, alteracao, whereCampo, chave)
+
+@crudSqlite 
+def dbUpdateOnibus (numOnibus, placa, ano, modelo, qtdPoltronas):
+	return """
+	UPDATE onibus
+	SET placa = "{}",
+		ano = "{}",
+		modelo = "{}",
+		qtdPoltronas = "{}"
+	WHERE numOnibus = "{}"
+	""".format (placa, ano, modelo, qtdPoltronas, numOnibus)
+
+@crudSqlite
+def dbUpdatePessoa (id, nome, sexo, usuario, senha):
+	return """
+	UPDATE pessoas
+	SET cpf = "{}",
+		nome = "{}",
+		sexo = "{}",
+		usuario = "{}",
+		senha = "{}",
+	WHERE id = "{}"
+	""".format (cpf, nome, sexo, id)
+
+@crudSqlite
+def dbUpdateMotorista (numMotorista, cpfMotorista, nome, sexo, usuario, senha):
+	return """
+	SELECT numMotorista, cpfMotorista, id, nome, sexo, usuario, senha
+	FROM motoristas, pessoas
+	SET cpfMotorista = "{}"
+		cpf = "{}",
+		nome = "{}",
+		sexo = "{}",
+		usuario = "{}",
+		senha = "{}",
+	WHERE "{}" = "{}"
+	""".format(cpfMotorista, cpfMotorista, nome,
+			 sexo, usuario, senha, numMotorista, id)
+
+	
+@crudSqlite 
+def dbUpdateViagem (numViagem, onibusPlaca, motoristaViagem, diaViagem,
+					horario, cidadeOrigem, cidadeDestino):
+	return """
+	UPDATE viagens
+	SET onibusPlaca = "{}",
+		motoristaViagem = "{}",
+		diaViagem = "{}",
+		horario = "{}",
+		cidadeOrigem = "{}",
+		cidadeDestino = "{}",
+	WHERE numViagem = "{}"
+	""".format (onibusPlaca, motoristaViagem, diaViagem,
+				horario, cidadeOrigem, cidadeDestino, numViagem)
+
+
+
+@crudSqlite
+def dbUpdatePessoa (setCampo, alteracao, whereCampo, chave):
+	return dbUpdate (pessoas, setCampo, alteracao, whereCampo, chave)
+
+@crudSqlite
+def dbUpdateMotorista (setCampo, alteracao, whereCampo, chave):
+	return dbUpdate (motoristas, setCampo, alteracao, whereCampo, chave)
+
+@crudSqlite
+def dbUpdateCliente (setCampo, alteracao, whereCampo, chave):
+	return dbUpdate (clientes, setCampo, alteracao, whereCampo, chave)
+
+@crudSqlite
+def dbUpdateCliente (setCampo, alteracao, whereCampo, chave):
+	return dbUpdate (clientes, setCampo, alteracao, whereCampo, chave)
+@crudSqlite
+def dbUpdateViagem (setCampo, alteracao, whereCampo, chave):
+	return dbUpdate (viagens, setCampo, alteracao, whereCampo, chave)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+Implementacao das funcoes de remocao referentes a cada tabela da bd
+"""
+@crudSqlite
+def dbDeletePessoa (cpf):
+	return """
+	DELETE FROM pessoas where cpf = "{}"
+	""".format (cpf)
+
+@crudSqlite
+def dbDeleteMotorista (cpfMotorista):
+	dbDeletePessoa (cpfMotorista)
+	return """
+	DELETE FROM motoristas where cpfMotorista = "{}"
+	""".format (cpf)
+
+@crudSqlite
+def dbDeleteCliente (cpfCliente):
+	dbDeletePessoa (cpfCliente)
+	return """
+	DELETE FROM clientes where cpfCliente = "{}"
+	""".format (cpf)
+
+@crudSqlite
+def dbDeleteOnibus (numOnibus):
+	return """
+	DELETE FROM onibus where numOnibus = "{}"
+	""".format (numOnibus)
+
+@crudSqlite
+def dbDeleteViagem (numViagem):
+	return """
+	DELETE FROM viagens where numViagem = "{}"
+	""".format (numViagem)
+

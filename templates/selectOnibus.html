@@ -24,10 +24,10 @@
         				<td> {{item[count]}} </td>
         			{% endfor %}
                     <form action= "{{ url_for('updateOnibus') }}" method="POST">
-                        <td class="button"> <button type="submit" class="botao" name="atualizar" value={{ item[5] }}>Atualizar</button></td>
+                        <td class="button"><button type="submit" class="botao atualizar" name="atualizar" value={{ item[5] }}></button></td>
                     </form>
                     <form action= "{{ url_for('deleteOnibus') }}" method="POST">
-                        <td class="button"> <button type="submit" class="botao" name="deletar" value={{ item[5] }}>Deletar</button></td>
+                        <td class="button"> <button type="submit" class="botao deletar" name="deletar" value={{ item[5] }} ></button></td>
                     </form>
         		</tr>
         	{% endfor %}

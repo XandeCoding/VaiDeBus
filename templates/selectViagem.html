@@ -16,6 +16,8 @@
         		<th>Horario</th>
         		<th>Placa do Onibus</th>
         		<th>Motorista</th>
+                <th>Atualizar</th>
+                <th>Deletar</th>
         	</tr>
         	{% for item in dataViagens %}
         		<tr>
@@ -23,10 +25,10 @@
         				<td> {{item[count]}} </td>
         			{% endfor %}
                     <form action= "{{ url_for('updateViagem') }}" method="POST">
-                        <td class="button"> <button type="submit" class="botao" name="atualizar" value={{ item[6] }}>Atualizar</button></td>
+                        <td class="button"> <button type="submit" class="botao atualizar" name="atualizar" value={{ item[6] }}></button></td>
                     </form>
                     <form action= "{{ url_for('deleteViagem') }}" method="POST">
-                        <td class="button"> <button type="submit" class="botao" name="deletar" value={{ item[6] }}>Deletar</button></td>
+                        <td class="button"> <button type="submit" class="botao deletar" name="deletar" value={{ item[6] }}></button></td>
                     </form>
         		</tr>
         	{% endfor %}

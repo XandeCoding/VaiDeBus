@@ -28,7 +28,7 @@ CREATE TABLE onibus 	(numOnibus INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 						ano INTEGER NOT NULL,
 						passageiros INTEGER NOT NULL,
 						modelo TEXT NOT NULL,
-						qtdPoltronas TEXT NOT NULL)"""
+						qtdPoltronas INTEGER NOT NULL)"""
 
 sqlViagens = """
 CREATE TABLE viagens 	(numViagem INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
