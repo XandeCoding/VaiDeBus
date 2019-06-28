@@ -8,9 +8,7 @@ def configure (app):
 	def controlPanel ():
 		return (render_template ("baseAdmin.html"))
 	#Falta adicionar os styles css, por falta de tempo vou testar
-	#somente a funcionalidade dos mesmos na adicao, e depois
-	#que o banco de dados estiver populado vou implementar as outras
-	#funcoes do banco de dados
+	#somente a funcionalidade dos mesmos
 
 
 
@@ -134,6 +132,7 @@ def configure (app):
 				flash ("Registro concluido!")
 		return render_template ("mensagemAdmin.html")
 
+	
 	@app.route ("/admin/controlPanel/selectViagem", methods=["GET", "POST",])
 	def selectViagem ():
 		if request.method  == "GET":
@@ -143,27 +142,29 @@ def configure (app):
 
 	@app.route ("/admin/controlPanel/updateViagem", methods=["GET", "POST",])
 	def updateViagem ():
-		if request.method == "GET":
-			numViagem = request.form.get ("atualizar")
+		numViagem = request.form.get ("atualizar")
+		if request.method == "POST" and numViagem != None:
 			return render_template ("updateViagem.html", 
 					dataViagem = dbSelectViagem (numViagem), 
 					dataMotoristas = dbSelectAllNomeMotoristas (),
 					dataOnibus = dbSelectAllOnibus ())
-		if request.method == "POST":
+		if request.method == "POST" and numViagem == None:
 			onibusPlaca = request.form.get ("onibusPlaca")
 			motoristaViagem = request.form.get ("motoristaViagem")
 			diaViagem = request.form.get ("diaViagem")
 			horario = request.form.get ("horario")
 			cidadeOrigem = request.form.get ("cidadeOrigem")
 			cidadeDestino = request.form.get ("cidadeDestino")	
-			if not onibusPlaca and not motoristaViagem and not diaViagem and not horario and not cidadeOrigem and not cidadeDestino:
-			 	flash ("Atualizacao invalida, tente novamente!")
+			numViagem = request.form.get ("atualizar")
+			print (numViagem)
+			#if not onibusPlaca and not motoristaViagem and not diaViagem and not horario and not cidadeOrigem and not cidadeDestino:
+			 	#flash ("Atualizacao invalida, tente novamente!")
 			 	#Implementar checagem de integridade com as outras tabelas
-			else:
-				dbInsertViagem (numViagem, onibusPlaca, motoristaViagem, diaViagem,
-					horario, cidadeOrigem, cidadeDestino)
+			#else:
+			dbUpdateViagem (numViagem, onibusPlaca, motoristaViagem, diaViagem,
+				horario, cidadeOrigem, cidadeDestino)
 				# implementar caso valido
-				flash ("Atualizacao concluida!")
+				#flash ("Atualizacao concluida!")
 		return render_template ("mensagemAdmin.html")	
 
 	@app.route ("/admin/controlPanel/deleteViagem", methods=["POST",])

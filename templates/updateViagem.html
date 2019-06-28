@@ -32,7 +32,9 @@
             <label class="horario">Horario de Saida:</label>
             <input class="horario" type="text" name="horario" value= {{ dataViagem[5] }}>
             <br>
-            <input type="submit" class="botao" name="cadastrar" value="cadastrar">
+            <input type="hidden" name="numViagem" value= {{ dataViagem[6] }}>
+            <input type="submit" class="botao" name="atualizar" value="Atualizar">
+
             </form>
      </div>
 {% endblock %}

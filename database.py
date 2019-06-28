@@ -167,9 +167,9 @@ def dbSelectViagem (numViagem):
 	connection = sqlite3.connect ("CompOnibus.db")
 	cursor = connection.cursor ()
 	command = """
-	SELECT cidadeOrigem, cidadeDestino, motoristaViagem, onibusPlaca, diaViagem, horario
+	SELECT cidadeOrigem, cidadeDestino, motoristaViagem, onibusPlaca, diaViagem, horario, numViagem
 	FROM viagens
-	WHERE numViagem = numViagem"""
+	WHERE numViagem = "{}" """.format (numViagem)
 
 	cursor.execute (command)
 	data = cursor.fetchone ()
@@ -275,38 +275,6 @@ def dbUpdateViagem (numViagem, onibusPlaca, motoristaViagem, diaViagem,
 	WHERE numViagem = "{}"
 	""".format (onibusPlaca, motoristaViagem, diaViagem,
 				horario, cidadeOrigem, cidadeDestino, numViagem)
-
-
-
-@crudSqlite
-def dbUpdatePessoa (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (pessoas, setCampo, alteracao, whereCampo, chave)
-
-@crudSqlite
-def dbUpdateMotorista (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (motoristas, setCampo, alteracao, whereCampo, chave)
-
-@crudSqlite
-def dbUpdateCliente (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (clientes, setCampo, alteracao, whereCampo, chave)
-
-@crudSqlite
-def dbUpdateCliente (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (clientes, setCampo, alteracao, whereCampo, chave)
-@crudSqlite
-def dbUpdateViagem (setCampo, alteracao, whereCampo, chave):
-	return dbUpdate (viagens, setCampo, alteracao, whereCampo, chave)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
